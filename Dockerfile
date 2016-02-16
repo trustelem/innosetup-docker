@@ -20,4 +20,8 @@ RUN wine wineboot --init \
 RUN mkdir /home/xclient/inno \
 		&& cd /home/xclient/inno \
 		&& curl -SL "http://www.jrsoftware.org/download.php/is.exe" -o is.exe \
-		&& wine is.exe
+		&& wine is.exe /SILENT; exit 0  
+
+USER root
+COPY iscc.sh /scripts/
+RUN chmod +x /scripts/iscc.sh
