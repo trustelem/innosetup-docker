@@ -11,10 +11,11 @@ RUN chmod +x /scripts/waitonprocess.sh
 
 # Install .NET Framework 4.0
 USER xclient
+# Dismiss .net, we only need innosetup
 RUN wine wineboot --init \
-		&& /scripts/waitonprocess.sh wineserver \
-		&& winetricks --unattended dotnet40 dotnet_verifier \
-		&& /scripts/waitonprocess.sh wineserver
+		&& /scripts/waitonprocess.sh wineserver #\
+#		&& winetricks --unattended dotnet40 dotnet_verifier \
+#		&& /scripts/waitonprocess.sh wineserver
 
 # Install Inno Setup binaries
 RUN mkdir /home/xclient/inno \
