@@ -24,5 +24,10 @@ RUN curl -SL "http://www.jrsoftware.org/download.php/is.exe" -o is.exe \
     && wine-x11-run wine is.exe /SP- /VERYSILENT \
     && rm is.exe
 
+# Install unofficial languages
+RUN cd "/home/xclient/.wine/drive_c/Program Files/Inno Setup 5/Languages" \
+    && curl -L "https://api.github.com/repos/jrsoftware/issrc/tarball" \
+    | tar xz --strip-components=4 --wildcards "*/Files/Languages/Unofficial/*.isl"
+
 WORKDIR /work
 ENTRYPOINT ["wine-x11-run", "iscc"]
