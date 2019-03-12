@@ -31,3 +31,4 @@ RUN mkdir /home/xclient/inno \
 		&& curl -SL "http://www.jrsoftware.org/download.php/is.exe" -o is.exe \
 		&& wine is.exe /SILENT; exit 0  
 
+ENTRYPOINT ["wine-x11-run", "iscc"]
