@@ -1,13 +1,14 @@
 FROM suchja/wine:latest
 MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 
+USER root
+
 # get at least error information from wine
 ENV WINEDEBUG -all,err+all
 
-# unfortunately we later need to wait on wineserver. Thus a small script for waiting is supplied.
-USER root
-COPY waitonprocess.sh /scripts/
-RUN chmod +x /scripts/waitonprocess.sh
+COPY opt /opt
+RUN chmod +x /opt/bin/*
+ENV PATH $PATH:/opt/bin
 
 # Install .NET Framework 4.0
 USER xclient
@@ -23,6 +24,3 @@ RUN mkdir /home/xclient/inno \
 		&& curl -SL "http://www.jrsoftware.org/download.php/is.exe" -o is.exe \
 		&& wine is.exe /SILENT; exit 0  
 
-USER root
-COPY iscc.sh /scripts/
-RUN chmod +x /scripts/iscc.sh
