@@ -6,7 +6,7 @@ directly from your Linux or macOS box.
 This image provides the following core packages in addition to the ones
 contained in the parent images:
 
-- [Inno Setup](http://www.jrsoftware.org/isinfo.php)
+- [Inno Setup](http://www.jrsoftware.org/isinfo.php) (Unicode version)
 
 # Usage
 Run in interactive mode with your source root bound to `/work`; specify your
