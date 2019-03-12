@@ -24,4 +24,5 @@ RUN curl -SL "http://www.jrsoftware.org/download.php/is.exe" -o is.exe \
     && wine-x11-run wine is.exe /SP- /VERYSILENT \
     && rm is.exe
 
+WORKDIR /work
 ENTRYPOINT ["wine-x11-run", "iscc"]
