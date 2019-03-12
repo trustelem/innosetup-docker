@@ -3,8 +3,15 @@ MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 
 USER root
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends xvfb \
+    && rm -rf /var/lib/apt/lists/*
+
 # get at least error information from wine
 ENV WINEDEBUG -all,err+all
+
+# Run virtual X buffer on this port
+ENV DISPLAY :99
 
 COPY opt /opt
 RUN chmod +x /opt/bin/*
