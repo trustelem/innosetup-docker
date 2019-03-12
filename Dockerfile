@@ -1,5 +1,5 @@
 FROM suchja/wine:latest
-MAINTAINER Jonata Weber <jonataa@gmail.com>
+MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 
 # get at least error information from wine
 ENV WINEDEBUG -all,err+all
