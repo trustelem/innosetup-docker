@@ -2,14 +2,19 @@
 
 set -eu
 
+escone() {
+    printf %s\\n "$1" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/"
+}
+
 winpaths() {
-    for arg in "$@"; do
+    for arg; do
         if [ -e "$arg" ]; then
-            winepath -w "$arg"
+            escone "$(winepath -w "$arg")"
         else
-            echo "$arg"
+            escone "$arg"
         fi
     done
+    echo " "
 }
 
 winenv() {
@@ -23,4 +28,4 @@ INNO_PATH="${PROGFILES_PATH}/${INNO_BIN}"
 
 eval set -- "$(winpaths "$@")"
 
-exec wine "$INNO_PATH" $(winpaths "$@")
+exec wine "$INNO_PATH" "$@"
