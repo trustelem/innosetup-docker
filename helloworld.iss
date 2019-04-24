@@ -6,6 +6,7 @@ DefaultDirName={pf}\EmptyProgram
 Uninstallable=false
 OutputBaseFilename=HelloWorld
 PrivilegesRequired=none
+SignTool=mysigntool
 
 [Messages]
 SetupAppTitle=My Title
