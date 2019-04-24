@@ -1,10 +1,10 @@
-FROM suchja/wine:latest
+FROM amake/wine:latest
 MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 
 USER root
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends xvfb \
+    && apt-get install -y --no-install-recommends procps xvfb \
     && rm -rf /var/lib/apt/lists/*
 
 # get at least error information from wine
