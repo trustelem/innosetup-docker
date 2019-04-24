@@ -4,7 +4,7 @@ MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 USER root
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends procps xvfb \
+    && apt-get install -y --no-install-recommends procps xvfb osslsigncode \
     && rm -rf /var/lib/apt/lists/*
 
 # get at least error information from wine
