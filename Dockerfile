@@ -48,6 +48,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get install -y --no-install-recommends \
     wine \
     wine32 \
+    osslsigncode \
     && rm -rf /var/lib/apt/lists/*
 
 COPY opt /opt
