@@ -26,7 +26,7 @@ RUN curl -SL "http://files.jrsoftware.org/is/5/innosetup-5.5.9-unicode.exe" -o i
 
 # Install unofficial languages
 RUN cd "/home/xclient/.wine/drive_c/Program Files/Inno Setup 5/Languages" \
-    && curl -L "https://api.github.com/repos/jrsoftware/issrc/tarball" \
+    && curl -L "https://api.github.com/repos/jrsoftware/issrc/tarball/29b1e8e8ebe7cf96ca854a1d6be2ae7af7f8018d" \
     | tar xz --strip-components=4 --wildcards "*/Files/Languages/Unofficial/*.isl"
 
 WORKDIR /work
