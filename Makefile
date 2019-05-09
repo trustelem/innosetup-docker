@@ -9,3 +9,7 @@ build:
 .PHONY: test
 test:
 	docker run --rm -i -v $(PWD):/work $(DOCKER_TAG) helloworld.iss
+
+.PHONY: shell
+shell:
+	docker run --rm -it -v $(PWD):/work --entrypoint /bin/bash $(DOCKER_TAG)
