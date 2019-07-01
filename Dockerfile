@@ -20,7 +20,7 @@ ENV PATH $PATH:/opt/bin
 USER xclient
 
 # Install Inno Setup binaries
-RUN curl -SL "http://files.jrsoftware.org/is/5/innosetup-5.5.9-unicode.exe" -o is.exe \
+RUN curl -SL "http://files.jrsoftware.org/is/5/innosetup-5.6.1-unicode.exe" -o is.exe \
     && wine-x11-run wine is.exe /SP- /VERYSILENT \
     && rm is.exe
 
