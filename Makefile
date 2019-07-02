@@ -13,3 +13,7 @@ test:
 .PHONY: shell
 shell:
 	docker run --rm -it -v $(PWD):/work --entrypoint /bin/bash $(DOCKER_TAG)
+
+.PHONY: clean
+clean:
+	rm -rf Output
