@@ -33,7 +33,9 @@ the directory your script is in. The same applies to the output.
 
 # Known issues
 ## Slow to start up
-We have to wait for `wineserver` to start running before Inno Setup can be run.
+We have to wait for `wineserver` to start running before Inno Setup can be
+run. Note that this has been mitigated somewhat by moving the base container to
+`debian:stretch`.
 
 ## Wine, X11-related warnings and errors
 This image pulls some tricks to get wine and Inno Setup installed and working
