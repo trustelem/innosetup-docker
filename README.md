@@ -43,3 +43,8 @@ anyway.
 # Does it work?
 Yes. Unlike the various other, similar repos for Dockerized Inno Setup I found
 on and around 2019-3-12, this one actually works.
+
+# See also
+An article about how to use this as part of a complete editing/building/signing
+workflow: [Inno Setup on Linux and
+macOS](https://gist.github.com/amake/3e7194e5e61d0e1850bba144797fd797)
