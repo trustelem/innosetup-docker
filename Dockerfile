@@ -1,4 +1,4 @@
-FROM amake/wine:latest
+FROM amake/wine:latest as inno
 MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
 
 USER root
@@ -28,6 +28,40 @@ RUN curl -SL "http://files.jrsoftware.org/is/6/innosetup-6.0.3.exe" -o is.exe \
 RUN cd "/home/xclient/.wine/drive_c/Program Files/Inno Setup 6/Languages" \
     && curl -L "https://api.github.com/repos/jrsoftware/issrc/tarball/ec262f6ded5eaa9db2565977463ea633b3b1df60" \
     | tar xz --strip-components=4 --wildcards "*/Files/Languages/Unofficial/*.isl"
+
+FROM debian:buster-slim
+
+RUN addgroup --system xusers \
+    && adduser \
+    --home /home/xclient \
+    --disabled-password \
+    --shell /bin/bash \
+    --gecos "user for running an xclient application" \
+    --ingroup xusers \
+    --quiet \
+    xclient
+
+# Install some tools required for creating the image
+# Install wine and related packages
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+    wine \
+    wine32 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY opt /opt
+RUN chmod +x /opt/bin/*
+ENV PATH $PATH:/opt/bin
+
+COPY --from=inno /home/xclient/.wine /home/xclient/.wine
+RUN chown xclient:xusers -R /home/xclient/.wine
+
+# Wine really doesn't like to be run as root, so let's use a non-root user
+USER xclient
+ENV HOME /home/xclient
+ENV WINEPREFIX /home/xclient/.wine
+ENV WINEARCH win32
 
 WORKDIR /work
 ENTRYPOINT ["iscc"]
