@@ -30,4 +30,4 @@ RUN cd "/home/xclient/.wine/drive_c/Program Files/Inno Setup 6/Languages" \
     | tar xz --strip-components=4 --wildcards "*/Files/Languages/Unofficial/*.isl"
 
 WORKDIR /work
-ENTRYPOINT ["wine-x11-run", "iscc"]
+ENTRYPOINT ["iscc"]
