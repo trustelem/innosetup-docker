@@ -1,5 +1,5 @@
 FROM amake/wine:latest as inno
-MAINTAINER Aaron Madlon-Kay <aaron@madlon-kay.com>
+MAINTAINER Trustelem <contact@trustelem.com>
 
 USER root
 
